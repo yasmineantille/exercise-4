@@ -1,0 +1,20 @@
+@prefix was: <https://was-course.interactions.ics.unisg.ch/>.
+@prefix brick: <https://brickschema.org/schema/1.1/Brick#>.
+@prefix dbpedia: <http://dbpedia.org/resource/>.
+@prefix http: <http://www.w3.org/2011/http#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix geonames: <https://www.geonames.org/ontology#>.
+
+# Blinds RestDesc
+{
+  ?blinds a was:BlindsDown; geonames:locatedIn ?room.
+  ?room a brick:Room. 
+}
+=>
+{
+  _:request http:methodName "PUT";
+	http:requestURI "blinds1.com" ;
+	http:reqBody "{ \"state\" : \"up\" }" .
+
+  ?room was:modifiedTo was:Bright.
+}.

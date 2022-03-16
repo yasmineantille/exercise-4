@@ -1,0 +1,3 @@
+@prefix was: <https://was-course.interactions.ics.unisg.ch/>.
+
+{ <https://interactions.ics.unisg.ch/Room1> was:modifiedTo was:Bright.  } => { }.

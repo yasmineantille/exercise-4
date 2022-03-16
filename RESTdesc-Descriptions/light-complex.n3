@@ -1,0 +1,60 @@
+@prefix was: <https://was-course.interactions.ics.unisg.ch/>.
+@prefix brick: <https://brickschema.org/schema/1.1/Brick#>.
+@prefix dbpedia: <http://dbpedia.org/resource/>.
+@prefix http: <http://www.w3.org/2011/http#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix geonames: <https://www.geonames.org/ontology#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+# Light RestDesc (with login, power, and color)
+{
+  ?light a was:LightsOff; geonames:locatedIn ?room.
+  ?room a brick:Room. 
+  
+  ?user a foaf:Agent.
+  ?user was:hasAccessToken ?token.
+}
+=>
+{
+  _:request http:methodName "PUT";
+	http:requestURI "light1.com/logIn" ;
+	http:reqBody ?token .
+
+  ?user was:loggedIn ?light. 
+}.
+
+{
+  ?light a was:LightsOff; geonames:locatedIn ?room.
+  ?room a brick:Room. 
+  
+  ?user a foaf:Agent.
+  ?user was:loggedIn ?light. 
+}
+=>
+{
+  _:request http:methodName "PUT";
+	http:requestURI "light1.com/power" ;
+	http:reqBody "{ \"state\" : \"on\" }" .
+
+  ?light was:poweredOn true. 
+  ?room was:modifiedTo was:Bright.
+}.
+
+{
+  ?light a was:LightsOff; geonames:locatedIn ?room.
+  ?room a brick:Room. 
+  
+  ?user a foaf:Agent.
+  ?user was:loggedIn ?light. 
+  ?user was:hasPreferredColor ?color.
+  ?light was:poweredOn true.
+}
+=>
+{
+  _:request http:methodName "PUT";
+	http:requestURI "light1.com/color" ;
+	http:reqBody ?color .
+
+  ?light was:hasColor ?color. 
+}.
+
