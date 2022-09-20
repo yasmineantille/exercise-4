@@ -1,0 +1,10 @@
+@prefix was: <https://was-course.interactions.ics.unisg.ch/>.
+@prefix brick: <https://brickschema.org/schema/1.1/Brick#>.
+@prefix dbpedia: <http://dbpedia.org/resource/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix geonames: <https://www.geonames.org/ontology#>.
+
+<https://interactions.ics.unisg.ch/Room1> a brick:Room.
+<https://raw.githubusercontent.com/HSG-WAS-SS22/exercise-3/main/testPic.png> a dbpedia:Image.
+<https://raw.githubusercontent.com/HSG-WAS-SS22/exercise-3/main/testPic.png> foaf:depicts <https://interactions.ics.unisg.ch/Room1>.
+
